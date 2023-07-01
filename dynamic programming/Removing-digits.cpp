@@ -249,7 +249,7 @@ void init_code(){
 void solve(){
    
 
-   int n;
+   long long n;
    cin>>n;
 
    vector<ll> dp(1e6,INF);
@@ -258,7 +258,7 @@ void solve(){
 
    for(int i=1;i<=n;i++){
 
-    int temp=i;
+long long temp=i;
     while(temp>0){
 
         dp[i]=min(dp[i],dp[i-temp%10]+1);
