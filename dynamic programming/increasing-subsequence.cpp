@@ -1,15 +1,17 @@
+
+ 
 #include <bits/stdc++.h>
 using namespace std;
-
+ 
 using ll = long long;
 using ld = long double;
 using db = double;
 using str = string;  // yay python!
-
+ 
 using pi = pair<int, int>;
 using pl = pair<ll, ll>;
 using pd = pair<db, db>;
-
+ 
 using vi = vector<int>;
 using vb = vector<bool>;
 using vl = vector<ll>;
@@ -18,19 +20,19 @@ using vs = vector<str>;
 using vpi = vector<pi>;
 using vpl = vector<pl>;
 using vpd = vector<pd>;
-
+ 
 #define tcT template <class T
 #define tcTU tcT, class U
 // ^ lol this makes everything look weird but I'll try it
 tcT > using V = vector<T>;
 tcT, size_t SZ > using AR = array<T, SZ>;
 tcT > using PR = pair<T, T>;
-
+ 
 // pairs
 #define mp make_pair
 #define f first
 #define s second
-
+ 
 // vectors
 // oops size(x), rbegin(x), rend(x) need C++17
 #define sz(x) int((x).size())
@@ -46,18 +48,18 @@ tcT > using PR = pair<T, T>;
 #define eb emplace_back
 #define pf push_front
 #define ed endl
-
+ 
 #define lb lower_bound
 #define ub upper_bound
 tcT > int lwb(V<T> &a, const T &b) { return int(lb(all(a), b) - bg(a)); }
-
+ 
 // loops
 #define FOR(i, a, b) for (int i = (a); i < (b); ++i)
 #define F0R(i, a) FOR(i, 0, a)
 #define ROF(i, a, b) for (int i = (b)-1; i >= (a); --i)
 #define R0F(i, a) ROF(i, 0, a)
 #define trav(a, x) for (auto &a : x)
-
+ 
 const int MOD = 1e9 + 7;  // 998244353;
 const int MX = 2e5 + 5;
 const ll INF = 1e18;  // not too close to LLONG_MAX
@@ -66,7 +68,7 @@ const int dx[4] = {1, 0, -1, 0},
           dy[4] = {0, 1, 0, -1};  // for every grid problem!!
 mt19937 rng((uint32_t)chrono::steady_clock::now().time_since_epoch().count());
 template <class T> using pqg = priority_queue<T, vector<T>, greater<T>>;
-
+ 
 // bitwise ops
 // also see https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html
 constexpr int pct(int x) { return __builtin_popcount(x); }  // # of bits set
@@ -76,19 +78,19 @@ constexpr int bits(int x) {  // assert(x >= 0); // make C++11 compatible until
 }  // floor(log2(x))
 constexpr int p2(int x) { return 1 << x; }
 constexpr int msk2(int x) { return p2(x) - 1; }
-
+ 
 ll cdiv(ll a, ll b) {
     return a / b + ((a ^ b) > 0 && a % b);
 }  // divide a by b rounded up
 ll fdiv(ll a, ll b) {
     return a / b - ((a ^ b) < 0 && a % b);
 }  // divide a by b rounded down
-
+ 
 tcT > bool ckmin(T &a, const T &b) {
     return b < a ? a = b, 1 : 0;
 }  // set a = min(a,b)
 tcT > bool ckmax(T &a, const T &b) { return a < b ? a = b, 1 : 0; }
-
+ 
 tcTU > T fstTrue(T lo, T hi, U f) {
     hi++;
     assert(lo <= hi);  // assuming f is increasing
@@ -116,14 +118,14 @@ tcTU > void erase(T &t, const U &u) {  // don't erase
     assert(it != end(t));
     t.erase(it);
 }  // element that doesn't exist from (multi)set
-
+ 
 // INPUT
 #define tcTUU tcT, class... U
 tcT > void re(complex<T> &c);
 tcTU > void re(pair<T, U> &p);
 tcT > void re(V<T> &v);
 tcT, size_t SZ > void re(AR<T, SZ> &a);
-
+ 
 tcT > void re(T &x) { cin >> x; }
 void re(db &d) {
     str t;
@@ -139,7 +141,7 @@ tcTUU > void re(T &t, U &...u) {
     re(t);
     re(u...);
 }
-
+ 
 tcT > void re(complex<T> &c) {
     T a, b;
     re(a, b);
@@ -152,7 +154,7 @@ tcT > void rv(int n, V<T> &x) {
     x.rsz(n);
     re(x);
 }
-
+ 
 // TO_STRING
 #define ts to_string
 str ts(char c) { return str(1, c); }
@@ -202,7 +204,7 @@ tcT > str ts(T v) {  // containers with begin(), end()
         res += ts(x);
     }
     return res;
-
+ 
 #endif
 }
 tcTU > str ts(pair<T, U> p) {
@@ -212,7 +214,7 @@ tcTU > str ts(pair<T, U> p) {
     return ts(p.f) + " " + ts(p.s);
 #endif
 }
-
+ 
 // OUTPUT
 tcT > void pr(T x) { cout << ts(x); }
 tcTUU > void pr(const T &t, const U &...u) {
@@ -225,7 +227,7 @@ tcTUU > void ps(const T &t, const U &...u) {
     if (sizeof...(u)) pr(" ");
     ps(u...);
 }
-
+ 
 // DEBUG
 void DBG() { cerr << "]" << endl; }
 tcTUU > void DBG(const T &t, const U &...u) {
@@ -233,79 +235,77 @@ tcTUU > void DBG(const T &t, const U &...u) {
     if (sizeof...(u)) cerr << ", ";
     DBG(u...);
 }
-
-
+ 
+ 
 void init_code(){
     #ifndef ONLINE_JUDGE
     freopen("input.txt","r",stdin);
     freopen("output.txt","w",stdout);
     #endif
 }
-
-
-
+ 
+ 
+ 
 void solve(){
  
  int n;
  cin>>n;
-
- vector<int> a(n);
- vector<int> temp;
-
+ 
+ vector<long long> a(n);
+ vector<long long> temp;
+ 
  for(auto &x:a)
     cin>>x;
-
- auto binarySearch = [](vector<int> a,int k){
-
+ 
+ auto binarySearch = [&](long long k){
+ 
   int res=-1;
   int l=0;
-  int r=a.size()-1;
+  int r=temp.size()-1;
   int mid;
-
+ 
   while(l<=r){
    mid=(l+r)/2;
    
-   if(a[mid]>=k){
+   if(temp[mid]>=k){
     res=mid;
     r=mid-1;
    }
-
+ 
    else{
     l=mid+1;
    }
-
-
+ 
+ 
   }
   
-
+ 
   return res;
  };
-
-
+ 
+ 
   for(int i=0;i<n;i++){
-    int ind=binarySearch(temp,a[i]);
-
+    int ind=binarySearch(a[i]);
+ 
     if(ind==-1)
         temp.pb(a[i]);
   else
     temp[ind]=a[i];
-
+ 
   }
  cout<<temp.size()<<endl;
-
-
-
+ 
+ 
+ 
 }
-
-
+ 
+ 
 int main(){
     clock_t tStart = clock();
     ios_base::sync_with_stdio(false);
     cin.tie(NULL),cout.tie(NULL);
     init_code();
-
+ 
     solve();
     return 0;
 }
-
-
